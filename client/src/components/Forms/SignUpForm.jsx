@@ -30,7 +30,7 @@ function SignUpForm() {
         });
 };
 return (
-    <div className='main-content'>
+    <div>
         <form className='form' onSubmit={handleFormSubmit}>
                 <div className='form-field signup'>
                     <input placeholder='Username' name= 'username' type='username' id='username' 

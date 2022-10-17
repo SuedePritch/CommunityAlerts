@@ -31,7 +31,7 @@ function LoginForm() {
         });
     };
 return (
-    <div className='main-content'>
+    <div>
         <form className='form' onSubmit={handleFormSubmit}>
                 <div className='form-field login'>
                     <input placeholder='Email' name= 'email' type='email' id='email' 

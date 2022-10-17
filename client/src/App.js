@@ -8,8 +8,6 @@ import { setContext } from '@apollo/client/link/context';
 import './App.css'
 
 // Component Imports
-import Login from './pages/Login/Login'
-import Signup from './pages/Signup/Signup'
 import Main from './pages/Main/Main';
 
 // APOLLO CONFIG
@@ -27,10 +25,6 @@ function App() {
       <>
         
         <Routes>
-          {/* Auth Routes */}
-          <Route path='/login' element={<Login />} />
-          <Route path='/signup' element={<Signup />} />
-
           {/* Main Landing Page */}
           <Route path='/' element={<Main />} />
 
