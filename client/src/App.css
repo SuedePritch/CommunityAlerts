@@ -11,9 +11,13 @@
   box-sizing: border-box;
   overflow: hidden;
 }
+html{
+  height:100vh;
+  width:100vw;
+  background: linear-gradient(120deg, var(--clr-primary-500), var(--clr-accent-500));
+}
 
 .main-content{
-  background: linear-gradient(120deg, var(--clr-primary-500), var(--clr-accent-500));
   padding: 0.5rem;
   width: 100vw;
   display: flex;
