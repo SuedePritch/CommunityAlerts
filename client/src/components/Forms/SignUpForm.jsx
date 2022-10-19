@@ -4,7 +4,7 @@ import { ADD_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth.js';
 import './Form.scss'
 
-function SignUpForm() {
+function SignUpForm({loginMenuState, setLoginMenuState}) {
     // BUILD MUTATION FOR LOGIN_USER
     const [addUser] = useMutation(ADD_USER);
     const [signupFormData, setSignupFormData] = useState({ email: '', password: ''});
@@ -29,9 +29,24 @@ function SignUpForm() {
             [name]: value,
         });
 };
+
+const toggleloginsignup = () => {
+    setLoginMenuState(prevState =>{
+      return !prevState
+    })
+
+  }
 return (
     <div>
         <form className='form' onSubmit={handleFormSubmit}>
+        <button className={
+                `loginbutton loginSignupButtons 
+                ${loginMenuState ? 'inactive' : 'active'}`}
+                onClick={toggleloginsignup}>Login</button>
+            <button className={
+                `signupbutton loginSignupButtons 
+                ${loginMenuState ? 'active' : 'inactive'}`}
+                onClick={toggleloginsignup}>Signup</button>
                 <div className='form-field signup'>
                     <input placeholder='Username' name= 'username' type='username' id='username' 
                         onChange={handleChange}></input>

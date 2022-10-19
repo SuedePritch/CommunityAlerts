@@ -1,8 +1,11 @@
 .form{
+    width:80vw;
+    max-width: 600px;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(6,1fr);
     gap:1rem;
+    border-radius: var(--border-radius);
     background-color: var(--clr-primary-500);
 }
 .form-field > *{
@@ -18,22 +21,33 @@
     background: var(--clr-primary-500);
     color: var(--clr-accent-900);
     border: none;
-    border-radius: 10px;
-    box-shadow: 2px 2px 50px 0px var(--clr-accent-500);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
 }
-
+button{
+    font-size: clamp(0.8rem, 3vw, 1.5em);
+}
 
 .loginSignupButtons{
     color: var(--clr-accent-900);
     background-color: var(--clr-primary-500);
     border:none;
+    
+}
+.active{
+    box-shadow: var(--box-shadow);
+    border:1px solid var(--clr-accent-900);
+    font-weight: 800;
+    z-index: 2;
 }
 
 .loginbutton{
+    border-radius:var(--border-radius) 0 0 0 ;
     grid-column: 1 / 4;
 }
 .signupbutton{
     grid-column: 4 / 7;
+    border-radius:0 var(--border-radius) 0 0 ;
 }
 .login{
     grid-column: 2 / 6;

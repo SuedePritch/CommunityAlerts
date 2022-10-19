@@ -3,7 +3,7 @@ import Login from '../../components/Login/Login'
 import Signup from '../../components/Signup/Signup'
 function Main() {
   const [loggedIn, setLoggedIn] = useState(false)
-  const [loginsignup, setloginsignup] = useState(true)
+  const [loginsignup, setloginsignup] = useState(false)
     const token = localStorage.getItem('id_token')
         
 
@@ -21,6 +21,7 @@ function Main() {
         localStorage.clear()
         setLoggedIn(false)
     }
+
   return (
       <div>
           {loggedIn ?
@@ -35,8 +36,8 @@ function Main() {
             <h1>Community Alerts</h1>
             <div>
               {loginsignup ?
-              <Login loginsignup={loginsignup} setloginsignup={setloginsignup}/>:
-              <Signup/>
+              <Signup loginMenuState={loginsignup} setLoginMenuState={setloginsignup}/>:
+              <Login loginMenuState={loginsignup} setLoginMenuState={setloginsignup}/>
               }
             </div>
         </div>

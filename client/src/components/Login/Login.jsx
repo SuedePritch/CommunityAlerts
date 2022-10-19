@@ -4,10 +4,10 @@ import React from 'react'
 // Component Imports
 import LoginForm from '../Forms/LoginForm'
 
-function Login() {
+function Login({loginMenuState, setLoginMenuState}) {
   return (
     <>
-        <LoginForm/>
+        <LoginForm loginMenuState={loginMenuState} setLoginMenuState={setLoginMenuState}/>
     </>
   )
 }

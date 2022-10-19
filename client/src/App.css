@@ -1,8 +1,13 @@
 :root{
+  /* Colours */
   --clr-primary-500:hsl(251, 93%, 9%);
   --clr-accent-500:hsl(202, 81%, 19%);
   --clr-accent-900:hsl(202, 88%, 73%);
   --linear-gradient-primary: linear-gradient(120deg, var(--clr-primary-500), var(--clr-accent-500));
+
+/* UtilityClasses */
+  --box-shadow: 0 0 30px 0px var(--clr-accent-500);
+  --border-radius:10px;
 }
 *,
 *::before,
@@ -11,6 +16,9 @@
   padding:0;
   box-sizing: border-box;
   overflow: hidden;
+  letter-spacing: 0.1em;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 600;
 }
 html{
   height:100vh;
@@ -27,12 +35,14 @@ html{
 }
 .main-content h1{
   background: var(--clr-primary-500);
-  border-radius: 10px;
+  border-radius: var(--border-radius);
   height: fit-content;
   padding:1rem 2rem;
   margin: 2rem;
+  font-size: clamp(0.25vw, 4vw, 3rem);
   color:var(--clr-accent-900);
-  box-shadow: 2px 2px 50px 0px var(--clr-accent-500);
+  box-shadow: var(--box-shadow);
+  
 }
 .main-content> *{
   padding:1rem 2rem;
