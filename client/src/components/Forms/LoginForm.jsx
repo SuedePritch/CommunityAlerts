@@ -33,6 +33,8 @@ function LoginForm() {
 return (
     <div>
         <form className='form' onSubmit={handleFormSubmit}>
+            <button className='loginbutton loginSignupButtons'>Login</button>
+            <button className='signupbutton loginSignupButtons'>Signup</button>
                 <div className='form-field login'>
                     <input placeholder='Email' name= 'email' type='email' id='email' 
                         onChange={handleChange}></input>

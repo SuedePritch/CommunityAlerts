@@ -3,6 +3,7 @@ import Login from '../../components/Login/Login'
 import Signup from '../../components/Signup/Signup'
 function Main() {
   const [loggedIn, setLoggedIn] = useState(false)
+  const [loginsignup, setloginsignup] = useState(true)
     const token = localStorage.getItem('id_token')
         
 
@@ -33,8 +34,10 @@ function Main() {
           <div className='main-content'>
             <h1>Community Alerts</h1>
             <div>
-              <Login/>
+              {loginsignup ?
+              <Login loginsignup={loginsignup} setloginsignup={setloginsignup}/>:
               <Signup/>
+              }
             </div>
         </div>
           
