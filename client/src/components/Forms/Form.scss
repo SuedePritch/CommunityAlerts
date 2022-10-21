@@ -8,14 +8,19 @@
     border-radius: var(--border-radius);
     background-color: var(--clr-primary-500);
 }
+
 .form-field > *{
     width: 100%;
-    border-radius: 10px;
+    border-radius: var(--border-radius);
+}
+label{
+    color:var(--clr-accent-900);
 }
 .form-field input{
+    margin-top: 0.5rem;
     border:none;
     box-shadow: 2px 2px 50px 0px var(--clr-accent-500);
-    padding: 1rem;
+    padding: 0.8rem;
 }
 .form-field-button{
     background: var(--clr-primary-500);
@@ -49,9 +54,8 @@ button{
     grid-column: 4 / 7;
     border-radius:0 var(--border-radius) 0 0 ;
 }
-.login{
-    grid-column: 2 / 6;
-}
+.login, 
 .signup{
+    margin-top:1rem;
     grid-column: 2 / 6;
 }

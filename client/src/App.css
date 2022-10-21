@@ -2,11 +2,11 @@
   /* Colours */
   --clr-primary-500:hsl(251, 93%, 9%);
   --clr-accent-500:hsl(202, 81%, 19%);
-  --clr-accent-900:hsl(202, 88%, 73%);
+  --clr-accent-900:hsl(202, 100%, 83%);
   --linear-gradient-primary: linear-gradient(120deg, var(--clr-primary-500), var(--clr-accent-500));
 
 /* UtilityClasses */
-  --box-shadow: 0 0 30px 0px var(--clr-accent-500);
+  --box-shadow: 0 0 30px 5px var(--clr-accent-500);
   --border-radius:10px;
 }
 *,
@@ -44,7 +44,7 @@ html{
   box-shadow: var(--box-shadow);
   
 }
-.main-content> *{
+.main-content > *{
   padding:1rem 2rem;
 }
 

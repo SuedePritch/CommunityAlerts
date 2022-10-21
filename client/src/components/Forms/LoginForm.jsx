@@ -40,23 +40,19 @@ function LoginForm({loginMenuState, setLoginMenuState}) {
 return (
     <div>
         <form className='form' onSubmit={handleFormSubmit}>
-            <button className={
-                `loginbutton loginSignupButtons 
-                ${loginMenuState ? 'inactive' : 'active'}`}
-                onClick={toggleloginsignup}>Login</button>
-            <button className={
-                `signupbutton loginSignupButtons 
-                ${loginMenuState ? 'active' : 'inactive'}`}
-                onClick={toggleloginsignup}>Signup</button>
-                <div className='form-field login'>
-                    <input placeholder='Email' name= 'email' type='email' id='email' 
-                        onChange={handleChange}></input>
-                </div>
-                <div className='form-field login'>
-                    <input placeholder='Password' name='password' type='password' id='password'
-                        onChange={handleChange}></input>
-                </div>
-                <button className='form-field form-field-button login ' type='submit' >Login </button>
+            <button className={`loginbutton loginSignupButtons ${loginMenuState ? 'inactive' : 'active'}`}onClick={toggleloginsignup}>Login</button>
+            <button className={`signupbutton loginSignupButtons ${loginMenuState ? 'active' : 'inactive'}`}onClick={toggleloginsignup}>Signup</button>
+                    <div className='form-field login'>
+                        <label htmlFor="email">Email</label>
+                        <input name= 'email' type='email' id='email'
+                            onChange={handleChange}></input>
+                    </div>
+                    <div className='form-field login'>
+                        <label htmlFor="password">Password</label>
+                        <input name='password' type='password' id='password'
+                            onChange={handleChange}></input>
+                    </div>
+                    <button className='form-field form-field-button  login' type='submit' >Login </button>
             </form>
     </div>
 )
