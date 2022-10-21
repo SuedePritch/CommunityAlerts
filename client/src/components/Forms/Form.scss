@@ -16,7 +16,8 @@
 label{
     color:var(--clr-accent-900);
 }
-.form-field input{
+.form-field input,
+.form-field select{
     margin-top: 0.5rem;
     border:none;
     box-shadow: 2px 2px 50px 0px var(--clr-accent-500);

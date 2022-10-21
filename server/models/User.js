@@ -5,11 +5,11 @@ const bcrypt = require('bcrypt');
 
 const userSchema = new Schema(
   {
-    username: {
-      type: String,
-      required: true,
-      unique: true,
-    },
+    community:{
+      type: Schema.Types.ObjectId,
+      ref: 'Community',
+      required: true
+  },
     email: {
       type: String,
       required: true,

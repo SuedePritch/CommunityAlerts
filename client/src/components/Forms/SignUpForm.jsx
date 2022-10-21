@@ -42,9 +42,12 @@ return (
         <button className={`loginbutton loginSignupButtons ${loginMenuState ? 'inactive' : 'active'}`}onClick={toggleloginsignup}>Login</button>
             <button className={`signupbutton loginSignupButtons ${loginMenuState ? 'active' : 'inactive'}`}onClick={toggleloginsignup}>Signup</button>
                     <div className='form-field signup'>
-                        <label htmlFor="username">Username</label>
-                        <input name= 'username' type='username' id='username'
-                            onChange={handleChange}></input>
+                        <label htmlFor="community">Community</label>
+                        <select name= 'community' type='community' id='community'
+                            onChange={handleChange}>
+                                <option value="first">first</option>
+                                <option value="second">second</option>
+                            </select>
                     </div>
                     <div className='form-field signup'>
                         <label htmlFor="email">Email</label>

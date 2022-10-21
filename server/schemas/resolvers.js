@@ -1,4 +1,4 @@
-const { User } = require('../models');
+const { User, Community} = require('../models');
 const { signToken } = require('../utils/auth');
 const { AuthenticationError } = require('apollo-server-express');
 
@@ -16,8 +16,32 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in! resolvers');
   
+    },
+
+
+    //Community
+    communities: async () => {
+      return Community.find()
     }
   },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   Mutation: {
     //USER
     addUser: async (parent, args) => {
@@ -43,6 +67,13 @@ const resolvers = {
       const token = signToken(user);
 
       return { token, user };
+    },
+
+
+    //COMMUNITY
+    newCommunity: async(parent, args) =>{
+      const community = await Community.create(args)
+      return {community}
     }
 
     }
