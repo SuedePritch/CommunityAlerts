@@ -1,5 +1,6 @@
-import { useMutation } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import React, { useState } from 'react';
+import { GET_COMMUNITIES } from '../../utils/queries';
 import { ADD_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth.js';
 import './Form.scss'
@@ -8,12 +9,25 @@ function SignUpForm({loginMenuState, setLoginMenuState}) {
     // BUILD MUTATION FOR LOGIN_USER
     const [addUser] = useMutation(ADD_USER);
     const [signupFormData, setSignupFormData] = useState({ email: '', password: ''});
+    
+    //get community names
+    let communityNamesArray;
+    const { loading, error, data } = useQuery(GET_COMMUNITIES);
+    if (loading) return 'Loading...';
+    if (error) return `Error! ${error.message}`;
+    if(!loading && !error){
+    communityNamesArray = data.communities
+    }
+
+
+
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
+        console.log(signupFormData);
         try {
             const userMutationResponse = await addUser ({
-                variables: { username: signupFormData.username, email: signupFormData.email, password: signupFormData.password},
+                variables: { community: signupFormData.community, email: signupFormData.email, password: signupFormData.password},
             });
             const token = userMutationResponse.data.addUser.token;
             Auth.login(token);
@@ -45,8 +59,10 @@ return (
                         <label htmlFor="community">Community</label>
                         <select name= 'community' type='community' id='community'
                             onChange={handleChange}>
-                                <option value="first">first</option>
-                                <option value="second">second</option>
+                                <option value="null">Select Your Community</option>
+                                {communityNamesArray.map((community)=>{
+                                    return <option value={community._id} key={community._id}>{community.communityname}</option>
+                                })}
                             </select>
                     </div>
                     <div className='form-field signup'>

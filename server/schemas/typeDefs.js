@@ -2,6 +2,7 @@ const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
     type Community{
+        _id: ID
         communityname: String
     }
     type User {

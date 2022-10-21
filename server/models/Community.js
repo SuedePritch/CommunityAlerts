@@ -3,8 +3,8 @@ const { Schema, model } = require('mongoose');
 const communitySchema = new Schema(
   {
     communityname:{
-      type: String,
-      required: true
+      type: String
+      // ,required: true
   }
   }
 );
