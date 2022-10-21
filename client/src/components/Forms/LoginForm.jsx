@@ -7,7 +7,7 @@ import './Form.scss'
 
 function LoginForm({loginMenuState, setLoginMenuState}) {
     // BUILD MUTATION FOR LOGIN_USER
-    const [login] = useMutation(LOGIN_USER);
+    const [login] = useMutation(LOGIN_USER); 
     const [userFormData, setUserFormData] = useState({ email: '', password: ''});
 
     const handleFormSubmit = async (event) => {
