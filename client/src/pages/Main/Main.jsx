@@ -1,4 +1,5 @@
 import React,{ useState, useEffect} from 'react'
+import MessageForm from '../../components/Forms/MessageForm'
 import Login from '../../components/Login/Login'
 import Signup from '../../components/Signup/Signup'
 function Main() {
@@ -17,18 +18,17 @@ function Main() {
         
 
 
-    const signout = () =>{
-        localStorage.clear()
-        setLoggedIn(false)
-    }
+    // const signout = () =>{
+    //     localStorage.clear()
+    //     setLoggedIn(false)
+    // }
 
   return (
       <div>
           {loggedIn ?
         <div className='main-content'>
           <h1>Community Alerts</h1>
-          <h3>Alerts Form</h3>
-          <button onClick={signout}>Signout</button>
+          <MessageForm/>
         </div>
         
           :
