@@ -33,7 +33,7 @@ function SignUpForm({loginMenuState, setLoginMenuState}) {
             Auth.login(token);
         } catch (e) {
         console.log(e)
-            alert('Email or Username already taken')
+            alert('Email or password incorrect')
         }
     };
     const handleChange = (event) => {
@@ -46,15 +46,15 @@ function SignUpForm({loginMenuState, setLoginMenuState}) {
 
 const toggleloginsignup = () => {
     setLoginMenuState(prevState =>{
-      return !prevState
+            return !prevState
     })
 
   }
 return (
     <div>
-        <form className='form' onSubmit={handleFormSubmit}>
-        <button className={`loginbutton loginSignupButtons ${loginMenuState ? 'inactive' : 'active'}`}onClick={toggleloginsignup}>Login</button>
-            <button className={`signupbutton loginSignupButtons ${loginMenuState ? 'active' : 'inactive'}`}onClick={toggleloginsignup}>Signup</button>
+        <form className='form'>
+        <button className={`loginbutton loginSignupButtons ${loginMenuState ? 'inactive' : 'active'}`} onClick={toggleloginsignup} type="button">Login</button>
+            <button className={`signupbutton loginSignupButtons ${loginMenuState ? 'active' : 'inactive'}`} type="button">Signup</button>
                     <div className='form-field signup'>
                         <label htmlFor="community">Community</label>
                         <select name= 'community' type='community' id='community'
@@ -67,15 +67,15 @@ return (
                     </div>
                     <div className='form-field signup'>
                         <label htmlFor="email">Email</label>
-                        <input name= 'email' type='email' id='email'
+                        <input name= 'email' type='email' id='email' autoComplete="current-email"
                             onChange={handleChange}></input>
                     </div>
                     <div className='form-field signup'>
                         <label htmlFor="password">Password</label>
-                        <input name='password' type='password' id='password'
+                        <input name='password' type='password' id='password' autoComplete="current-password"
                             onChange={handleChange}></input>
                     </div>
-                    <button className="form-field form-field-button signup" type='submit' >Signup </button>
+                    <button className="form-field form-field-button signup" type='button' onClick={handleFormSubmit}>Signup </button>
             </form>
     </div>
 )

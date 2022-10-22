@@ -32,27 +32,25 @@ function LoginForm({loginMenuState, setLoginMenuState}) {
     };
 
     const toggleloginsignup = () => {
-        setLoginMenuState(prevState =>{
-          return !prevState
-        })
+        setLoginMenuState(true)
     
       }
 return (
     <div>
-        <form className='form' onSubmit={handleFormSubmit}>
-            <button className={`loginbutton loginSignupButtons ${loginMenuState ? 'inactive' : 'active'}`}onClick={toggleloginsignup}>Login</button>
-            <button className={`signupbutton loginSignupButtons ${loginMenuState ? 'active' : 'inactive'}`}onClick={toggleloginsignup}>Signup</button>
+        <form className='form'>
+            <button className={`loginbutton loginSignupButtons ${loginMenuState ? 'inactive' : 'active'}`} type="button">Login</button>
+            <button className={`signupbutton loginSignupButtons ${loginMenuState ? 'active' : 'inactive'}`}onClick={toggleloginsignup} type="button">Signup</button>
                     <div className='form-field login'>
                         <label htmlFor="email">Email</label>
-                        <input name= 'email' type='email' id='email'
+                        <input name= 'email' type='email' id='email' autoComplete="current-email"
                             onChange={handleChange}></input>
                     </div>
                     <div className='form-field login'>
                         <label htmlFor="password">Password</label>
-                        <input name='password' type='password' id='password'
+                        <input name='password' type='password' id='password' autoComplete="current-password"
                             onChange={handleChange}></input>
                     </div>
-                    <button className='form-field form-field-button  login' type='submit' >Login </button>
+                    <button className='form-field form-field-button  login' type='button' onClick={handleFormSubmit}>Login </button>
             </form>
     </div>
 )
