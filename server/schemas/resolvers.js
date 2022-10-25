@@ -74,9 +74,13 @@ const resolvers = {
     newCommunity: async(parent, args) =>{
       const community = await Community.create(args)
       return {community}
-    }
+    },
 
-    }
+    addNewPhoneList: async (parent, {community, phonelisttitle}) =>{
+      const newphonelisttitle = await Community.findOneAndUpdate(
+         community, { $push: {phonelist: phonelisttitle }})
+      return {newphonelisttitle}
+    }}
 };
 
 module.exports = resolvers;

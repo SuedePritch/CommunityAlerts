@@ -17,6 +17,23 @@ const typeDefs = gql`
     }
 
 
+    input PhoneListInput{
+        firstname: String
+        lastname: String
+        phonenumber: String
+    }
+    type PhoneList{
+        _id: ID
+        firstname: String
+        lastname: String
+        phonenumber: String
+    }
+    type PhoneLists {
+        phonelisttitle: String
+        phonelist: [PhoneList]
+    }
+
+
 
 
 
@@ -31,6 +48,8 @@ type Mutation {
     login(email: String!, password: String!): Auth
     #Community
     newCommunity(communityname: String!): Community
+    addNewPhoneList(community: ID!, phonelisttitle: String!): Community
+    addNewPhoneNumber(community: ID!, phonelists: String, phonelist: PhoneListInput): Community
 }
 `;
 

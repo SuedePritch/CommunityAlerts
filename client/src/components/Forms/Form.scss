@@ -20,7 +20,7 @@ label{
 }
 .form-field input,
 .form-field select{
-    margin-top: 0.5rem;
+    margin-top: 0.25rem;
     border:none;
     box-shadow: 2px 2px 50px 0px var(--clr-accent-500);
     padding: 0.65rem;
@@ -60,7 +60,7 @@ button{
 .login, 
 .signup,
 .message{
-    margin-top:1rem;
+    margin-top:0.5rem;
     grid-column: 2 / 6;
 }
 .messagetextarea{

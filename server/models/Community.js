@@ -4,8 +4,16 @@ const communitySchema = new Schema(
   {
     communityname:{
       type: String
-      // ,required: true
-  }
+    },
+    phonelists:{
+      phonelisttitle: String,
+      phonelist:[{
+        firstname: String,
+        lastname: String,
+        phonenumber: String
+      }]
+    }
+
   }
 );
 
