@@ -5,15 +5,11 @@ const communitySchema = new Schema(
     communityname:{
       type: String
     },
-    phonelists:{
-      phonelisttitle: String,
-      phonelist:[{
-        firstname: String,
-        lastname: String,
-        phonenumber: String
+    recipients:[{
+          firstname: String,
+          lastname: String,
+          phonenumber: String
       }]
-    }
-
   }
 );
 
