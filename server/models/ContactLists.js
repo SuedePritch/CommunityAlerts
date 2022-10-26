@@ -1,12 +1,12 @@
 const { Schema, model } = require('mongoose');
 
-const recipientSchema = new Schema(
+const contactListSchema = new Schema(
   {
-    recipientTitle:{
+    contactListTitle:{
       type: String,
       unique: true
     },
-    recipients:[{
+    contacts:[{
           firstname: String,
           lastname: String,
           phonenumber: String
@@ -15,6 +15,6 @@ const recipientSchema = new Schema(
 );
 
 
-const Recipients = model('Recipients', recipientSchema);
+const ContactList = model('contactList', contactListSchema);
 
-module.exports = Recipients;
+module.exports = ContactList;

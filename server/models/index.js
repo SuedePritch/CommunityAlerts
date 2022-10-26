@@ -1,5 +1,5 @@
 const User = require('./User');
 const Community = require('./Community')
-const Recipients = require('./Recipients')
+const ContactLists = require('./ContactLists')
 
-module.exports = { User, Community, Recipients };
+module.exports = { User, Community, ContactLists };

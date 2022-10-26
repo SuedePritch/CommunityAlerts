@@ -5,9 +5,9 @@ const communitySchema = new Schema(
     communityname:{
       type: String
     },
-    recipientlist:[{
+    contactists:[{
       type: Schema.Types.ObjectId,
-      ref: 'Recipient'
+      ref: 'ContactLists'
   }],
   }
 );

@@ -4,7 +4,7 @@ const typeDefs = gql`
     type Community{
         _id: ID
         communityname: String
-        recipientlist: [Recipients]
+        contactlists: ContactLists
     }
     type User {
     _id: ID
@@ -18,17 +18,22 @@ const typeDefs = gql`
     }
 
 
-    input RecipientInput{
+    input ContactInput{
         firstname: String
         lastname: String
         phonenumber: String
     }
-    type Recipients{
-        _id: ID!
-        recipientTitle: String
+    type Contact{
+        _id: ID
         firstname: String
         lastname: String
         phonenumber: String
+    }
+    type ContactLists{
+        _id: ID
+        contactListTitle: String
+        contacts: [Contact]
+        
     }
 
 
@@ -39,6 +44,8 @@ type Query{
     user: User
     #Community
     communities: [Community]
+    # Recipients
+    contactList: ContactLists
 
 }
 type Mutation {
@@ -46,9 +53,9 @@ type Mutation {
     addUser(community: ID!, email: String! password: String!): Auth
     login(email: String!, password: String!): Auth
     #Community
-    newCommunity(communityname: String!, recipientlist:[ID]): Community
+    newCommunity(communityname: String!, contactLists:[ID]): Community
     # Recipients
-    createNewRecipientList(recipientTitle: String!, recipients: RecipientInput): Recipients
+    createNewContactList(contactListTitle: String!, contacts: [ContactInput]): ContactLists
     
 }
 `;
