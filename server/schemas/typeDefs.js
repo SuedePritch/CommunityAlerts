@@ -4,6 +4,7 @@ const typeDefs = gql`
     type Community{
         _id: ID
         communityname: String
+        recipientlist: [Recipients]
     }
     type User {
     _id: ID
@@ -17,20 +18,17 @@ const typeDefs = gql`
     }
 
 
-    input PhonelistInput{
+    input RecipientInput{
         firstname: String
         lastname: String
         phonenumber: String
     }
-    type Phonelist{
-        _id: ID
-        firstname: String
-        lastname: String
-        phonenumber: String
-    }
-    type Recipients {
+    type Recipients{
         _id: ID!
-        recipients: [Phonelist]
+        recipientTitle: String
+        firstname: String
+        lastname: String
+        phonenumber: String
     }
 
 
@@ -48,8 +46,9 @@ type Mutation {
     addUser(community: ID!, email: String! password: String!): Auth
     login(email: String!, password: String!): Auth
     #Community
-    newCommunity(communityname: String!): Community
-    newRecipients(community: ID!, recipients: PhonelistInput): Community
+    newCommunity(communityname: String!, recipientlist:[ID]): Community
+    createNewRecipientList(recipientTitle: String!, recipients: RecipientInput): Recipients
+    # newRecipients(community: ID!, recipients: PhonelistInput): Community
 }
 `;
 

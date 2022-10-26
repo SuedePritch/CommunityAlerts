@@ -1,6 +1,7 @@
 const { User, Community} = require('../models');
 const { signToken } = require('../utils/auth');
 const { AuthenticationError } = require('apollo-server-express');
+const Recipients = require('../models/Recipients');
 
 
 
@@ -75,10 +76,9 @@ const resolvers = {
       const community = await Community.create(args)
       return {community}
     },
-    newRecipients: async (parent, {community, recipients}) => {
-      return await Community.findByIdAndUpdate(
-        community, { $push: { recipients: recipients}}, {new: true}
-      )
+    createNewRecipientList: async (parent, args) => {
+      const recipientCreation = await Recipients.create(args)
+      return recipientCreation
     },
   }
 };

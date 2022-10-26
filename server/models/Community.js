@@ -5,11 +5,10 @@ const communitySchema = new Schema(
     communityname:{
       type: String
     },
-    recipients:[{
-          firstname: String,
-          lastname: String,
-          phonenumber: String
-      }]
+    recipientlist:[{
+      type: Schema.Types.ObjectId,
+      ref: 'Recipient'
+  }],
   }
 );
 
