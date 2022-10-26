@@ -4,7 +4,7 @@ const typeDefs = gql`
     type Community{
         _id: ID
         communityname: String
-        contactlists: ContactLists
+        contactlists: [ContactLists]
     }
     type User {
     _id: ID
@@ -43,7 +43,7 @@ const typeDefs = gql`
 type Query{
     user: User
     #Community
-    communities: [Community]
+    communities: Community
     # Recipients
     contactList: ContactLists
 
@@ -53,7 +53,7 @@ type Mutation {
     addUser(community: ID!, email: String! password: String!): Auth
     login(email: String!, password: String!): Auth
     #Community
-    newCommunity(communityname: String!, contactLists:[ID]): Community
+    newCommunity(communityname: String!, contactlists:[ID]): Community
     # Recipients
     createNewContactList(contactListTitle: String!, contacts: [ContactInput]): ContactLists
     

@@ -5,7 +5,7 @@ const communitySchema = new Schema(
     communityname:{
       type: String
     },
-    contactists:[{
+    contactlists:[{
       type: Schema.Types.ObjectId,
       ref: 'ContactLists'
   }],

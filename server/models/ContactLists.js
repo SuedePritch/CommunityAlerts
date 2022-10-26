@@ -15,6 +15,6 @@ const contactListSchema = new Schema(
 );
 
 
-const ContactList = model('contactList', contactListSchema);
+const ContactList = model('ContactLists', contactListSchema);
 
 module.exports = ContactList;

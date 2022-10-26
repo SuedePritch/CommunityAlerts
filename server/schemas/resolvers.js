@@ -22,7 +22,7 @@ const resolvers = {
 
     //Community
     communities: async () => {
-      return Community.find()
+      return Community.findOne().populate('contactlists')
     },
 
     //ContactLists
