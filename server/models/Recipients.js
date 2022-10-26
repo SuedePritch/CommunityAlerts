@@ -3,7 +3,8 @@ const { Schema, model } = require('mongoose');
 const recipientSchema = new Schema(
   {
     recipientTitle:{
-      type: String
+      type: String,
+      unique: true
     },
     recipients:[{
           firstname: String,

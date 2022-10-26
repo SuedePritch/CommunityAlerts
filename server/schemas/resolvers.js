@@ -23,7 +23,12 @@ const resolvers = {
     //Community
     communities: async () => {
       return Community.find()
-    }
+    },
+
+    //Recipients
+    // recipients: async (parent, context) =>{
+    //   return Recipients.find()
+    // }
   },
 
 
@@ -76,9 +81,13 @@ const resolvers = {
       const community = await Community.create(args)
       return {community}
     },
-    createNewRecipientList: async (parent, args) => {
+
+
+    //Recipients -- phone number lists
+    createNewRecipientList: async (parent, args, context) => {
       const recipientCreation = await Recipients.create(args)
-      return recipientCreation
+      const addRecipientListToCommunity = await Community.findOneAndUpdate(context.community, { $push: { recipientlist: recipientCreation._id }})
+      return addRecipientListToCommunity
     },
   }
 };

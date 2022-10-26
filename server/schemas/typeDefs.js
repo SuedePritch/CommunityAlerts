@@ -47,8 +47,9 @@ type Mutation {
     login(email: String!, password: String!): Auth
     #Community
     newCommunity(communityname: String!, recipientlist:[ID]): Community
+    # Recipients
     createNewRecipientList(recipientTitle: String!, recipients: RecipientInput): Recipients
-    # newRecipients(community: ID!, recipients: PhonelistInput): Community
+    
 }
 `;
 
