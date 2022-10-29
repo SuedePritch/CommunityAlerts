@@ -28,8 +28,6 @@ const resolvers = {
 
     //ContactLists
     contactList: async (parent, args, context) =>{
-      // return Community.findOne().populate('contactlists')
-      
       return Community.findById({
         _id: context.user.community
       }).populate('contactlists')

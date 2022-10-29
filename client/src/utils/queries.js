@@ -15,3 +15,21 @@ communities {
   }
 }
 `
+export const GET_CONTACTLISTS = gql`
+query contactlists {
+  contactList {
+    _id
+    communityname
+    contactlists {
+      _id
+      contactListTitle
+      contacts {
+        _id
+        firstname
+        lastname
+        phonenumber
+      }
+    }
+  }
+}
+`
