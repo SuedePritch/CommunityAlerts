@@ -2,6 +2,7 @@ const { User, Community} = require('../models');
 const { signToken } = require('../utils/auth');
 const { AuthenticationError } = require('apollo-server-express');
 const ContactLists = require('../models/ContactLists');
+const { where } = require('../models/User');
 
 
 
@@ -22,12 +23,17 @@ const resolvers = {
 
     //Community
     communities: async () => {
-      return Community.findOne().populate('contactlists')
+      return Community.find()
     },
 
     //ContactLists
-    contactList: async () =>{
-      return ContactLists.findOne()
+    contactList: async (parent, args, context) =>{
+      // return Community.findOne().populate('contactlists')
+      
+      return Community.findById({
+        _id: context.user.community
+      }).populate('contactlists')
+
     }
   },
 
