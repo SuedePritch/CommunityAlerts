@@ -1,34 +1,65 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useQuery } from '@apollo/client';
 import { GET_CONTACTLISTS } from '../../utils/queries';
 function MessageForm() {
-  //get community names
-  let contactlistArray;
+    const [messageForm, setMessageForm] = useState({recipients: [''], message:''})
+    const messageAPIUrl ="http://localhost:3007/api/messages"
+  //get contact list titles
+  let contactlistTitleArray;
+
   const { loading, error, data } = useQuery(GET_CONTACTLISTS);
   if (loading) return 'Loading...';
   if (error) return `Error! ${error.message}`;
   if(!loading && !error){
-  contactlistArray = data.contactList.contactlists
+  contactlistTitleArray = data.contactList.contactlists
   }
 
 
-    const handleChange = ()=>{
-        console.log("sent message")
+  const sendMessages = (event) =>{
+    event.preventDefault();
+    fetch(messageAPIUrl, {method: 'POST', headers: {'Content-Type': 'application/json'},body: JSON.stringify({
+        body: `A FIRE has been reported by companyname at the location location. Please log into Safety Conscious to view updates on the situation. `, 
+        from: '+18704937503', 
+        to: '+12506170145'
+    })}).then(res => res.json());
+}
+
+    const handleChange =(event)=>{
+        const { name, value } = event.target;
+            setMessageForm({
+                ...messageForm,
+                [name]: value.split(','),
+            });
+            console.log(messageForm);
+       
     }
-    const handleFormSubmit = ()=>{
-        console.log("sent message")
-    }
+ 
+
+
+
+
+
+
   return (
     <div>
         <form className='form'>
                     <div className='form-field message'>
                     <div className='form-field message'>
                         <label htmlFor="recipients">Send Message To:</label>
-                        <select name= 'recipients' type='recipients' id='recipients'
-                            onChange={handleChange}>
+                        <select name='recipients' type='recipients' id='recipients' onChange={handleChange}>
                                 <option value="null">Select Recipients</option>
-                                {contactlistArray.map((contactlist)=>{
-                                    return <option value={contactlist._id} key={contactlist._id}>{contactlist.contactListTitle}</option>
+                                {contactlistTitleArray.map((contactlist)=>{
+                                    return <option value={
+                                        contactlistTitleArray.map((contactlist)=>{
+                                            const phonenumberArray = []
+                                            return contactlist.contacts.map((contacts)=>{
+                                                    phonenumberArray.push(contacts.phonenumber)
+                                                    return phonenumberArray
+                                                
+                                                
+                                            })
+                                        })
+                                    } key={contactlist._id}>{contactlist.contactListTitle}</option>
                                 })}
                             </select>
                     </div>
@@ -38,7 +69,7 @@ function MessageForm() {
                         <textarea name='message' type='message' id='message'
                             onChange={handleChange}></textarea>
                     </div>
-                    <button className='form-field message form-field-button ' type='button' onClick={handleFormSubmit}>Send Message </button>
+                    <button className='form-field message form-field-button ' type='button' onClick={sendMessages}>Send Message </button>
             </form>
     </div>
   )
