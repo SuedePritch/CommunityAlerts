@@ -30,7 +30,6 @@ function MessageForm() {
                 ...messageForm,
                 [name]: value,
             });
-            console.log(messageForm);
        
     }
  
@@ -49,16 +48,9 @@ function MessageForm() {
                         <select name='recipients' type='recipients' id='recipients' onChange={handleChange}>
                                 <option value="null">Select Recipients</option>
                                 {contactlistTitleArray.map((contactlist)=>{
-                                    return <option value={
-                                        contactlistTitleArray.map((contactlist)=>{
-                                            const phonenumberArray = []
-                                            return contactlist.contacts.map((contacts)=>{
-                                                    phonenumberArray.push(contacts.phonenumber)
-                                                    return phonenumberArray
-                                                
-                                                
-                                            })
-                                        })
+                                    return <option value={contactlist.contacts.map((contact)=>{
+                                        return contact.phonenumber
+                                    })
                                     } key={contactlist._id}>{contactlist.contactListTitle}</option>
                                 })}
                             </select>

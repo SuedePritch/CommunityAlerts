@@ -56,6 +56,7 @@ type Mutation {
     newCommunity(communityname: String!, contactlists:[ID]): Community
     # ContactList
     createNewContactList(contactListTitle: String!, contacts: [ContactInput]): ContactLists
+    addPhoneNumberToContactList(contactLists: ID!, contacts:ContactInput): ContactLists
     
 }
 `;

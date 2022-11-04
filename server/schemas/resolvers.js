@@ -2,7 +2,6 @@ const { User, Community} = require('../models');
 const { signToken } = require('../utils/auth');
 const { AuthenticationError } = require('apollo-server-express');
 const ContactLists = require('../models/ContactLists');
-const { where } = require('../models/User');
 
 
 
@@ -92,6 +91,17 @@ const resolvers = {
       const contactsCreation = await ContactLists.create(args)
       const addContactListToCommunity = await Community.findOneAndUpdate(context.community, { $push: {  contactlists: contactsCreation._id }})
       return addContactListToCommunity
+    },
+
+    addPhoneNumberToContactList: async (parent, {_id, contacts}) =>{
+      return ContactLists.findOneAndUpdate(
+        _id,
+        {$push:{
+          contacts: contacts
+        }
+      },{ new: true })
+      
+
     },
   }
 };
