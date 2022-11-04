@@ -28,8 +28,7 @@ app.use(cors())
 // }
 
 app.post('/api/messages', (req, res) => {
-
-  res.header('Content-Type', 'application/json');
+res.header('Content-Type', 'application/json');
 // Download the helper library from https://www.twilio.com/docs/node/install
 // Find your Account SID and Auth Token in Account Info
 // and set the environment variables. See http://twil.io/secure

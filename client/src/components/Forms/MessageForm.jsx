@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useQuery } from '@apollo/client';
 import { GET_CONTACTLISTS } from '../../utils/queries';
 function MessageForm() {
-    const [messageForm, setMessageForm] = useState({recipients: [''], message:''})
+    const [messageForm, setMessageForm] = useState({recipients: {}, message:''})
     const messageAPIUrl ="http://localhost:3007/api/messages"
   //get contact list titles
   let contactlistTitleArray;
@@ -18,9 +18,9 @@ function MessageForm() {
   const sendMessages = (event) =>{
     event.preventDefault();
     fetch(messageAPIUrl, {method: 'POST', headers: {'Content-Type': 'application/json'},body: JSON.stringify({
-        body: `A FIRE has been reported by companyname at the location location. Please log into Safety Conscious to view updates on the situation. `, 
+        body: messageForm.message, 
         from: '+18704937503', 
-        to: '+12506170145'
+        to: messageForm.recipients.split(',')
     })}).then(res => res.json());
 }
 
@@ -28,7 +28,7 @@ function MessageForm() {
         const { name, value } = event.target;
             setMessageForm({
                 ...messageForm,
-                [name]: value.split(','),
+                [name]: value,
             });
             console.log(messageForm);
        
