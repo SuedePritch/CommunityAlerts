@@ -17,11 +17,13 @@ function MessageForm() {
 
   const sendMessages = (event) =>{
     event.preventDefault();
-    fetch(messageAPIUrl, {method: 'POST', headers: {'Content-Type': 'application/json'},body: JSON.stringify({
-        body: messageForm.message, 
-        from: '+18704937503', 
-        to: messageForm.recipients.split(',')
-    })}).then(res => res.json());
+    messageForm.recipients.split(',').forEach((phonenumber)=>{
+        fetch(messageAPIUrl, {method: 'POST', headers: {'Content-Type': 'application/json'},body: JSON.stringify({
+            body: messageForm.message, 
+            from: '+18704937503', 
+            to: phonenumber
+        })}).then(res => res.json());
+    })
 }
 
     const handleChange =(event)=>{

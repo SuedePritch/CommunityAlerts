@@ -1,0 +1,12 @@
+.phone-list-button{
+    position: absolute;
+    bottom:0;
+    left:0;
+    font-size: 0.9em;
+    padding:0.25rem 0.75rem;
+    background: var(--clr-primary-500);
+    border: none;
+    border-radius: 0 var(--border-radius) 0 0 ;
+    color: var(--clr-accent-900);
+    box-shadow:var(--box-shadow);
+}

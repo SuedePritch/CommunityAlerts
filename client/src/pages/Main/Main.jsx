@@ -2,6 +2,7 @@ import React,{ useState, useEffect} from 'react'
 import MessageForm from '../../components/Forms/MessageForm'
 import Login from '../../components/Login/Login'
 import Signup from '../../components/Signup/Signup'
+import PhoneList from '../../components/PhoneList/PhoneList'
 function Main() {
   const [loggedIn, setLoggedIn] = useState(false)
   const [loginsignup, setloginsignup] = useState(false)
@@ -28,6 +29,7 @@ function Main() {
           {loggedIn ?
         <div className='main-content'>
           <h1>Community Alerts</h1>
+          <PhoneList/>
           <MessageForm/>
         </div>
         
