@@ -24,9 +24,8 @@ function PhoneList() {
       <div className="contact-list">
         {contactlistArray.map((contactlists) =>{
           return contactlists.contacts.map((contact)=>{
-            return <div>
-              <p>{contact.firstname}</p>
-              <p>{contact.lastname}</p>
+            return <div className='contact'>
+              <p>{contact.firstname} {contact.lastname}</p>
               <p>{contact.phonenumber}</p>
             </div>
           });
