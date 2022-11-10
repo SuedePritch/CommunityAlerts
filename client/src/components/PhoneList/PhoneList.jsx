@@ -18,17 +18,24 @@ function PhoneList() {
   const openContacts = () =>{
     setViewContacts(true)
   }
+  const closeContacts = () =>{
+    setViewContacts(false)
+  }
   return (
     <div>
       {viewContacts ?
       <div className="contact-list">
+        <button onClick={closeContacts}>X</button>
         {contactlistArray.map((contactlists) =>{
-          return contactlists.contacts.map((contact)=>{
-            return <div className='contact'>
-              <p>{contact.firstname} {contact.lastname}</p>
-              <p>{contact.phonenumber}</p>
-            </div>
-          });
+          return <div>
+            <h2>{contactlists.contactListTitle}</h2>
+            {contactlists.contacts.map((contact)=>{
+              return <div className='contact'>
+                <p>{contact.firstname} {contact.lastname}</p>
+                <p>{contact.phonenumber}</p>
+              </div>
+            })}
+          </div>
         }
         )}
       </div>
