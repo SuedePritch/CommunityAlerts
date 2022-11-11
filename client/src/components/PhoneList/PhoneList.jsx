@@ -25,7 +25,7 @@ function PhoneList() {
     <div>
       {viewContacts ?
       <div className="contact-list">
-        <button onClick={closeContacts}>X</button>
+        <button className="close-contact-button" onClick={closeContacts}>x</button>
         {contactlistArray.map((contactlists) =>{
           return <div>
             <h2>{contactlists.contactListTitle}</h2>
