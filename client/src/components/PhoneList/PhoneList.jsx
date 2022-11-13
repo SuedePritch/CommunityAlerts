@@ -5,6 +5,7 @@ import './PhoneList.scss'
 
 function PhoneList() {
   const [viewContacts, setViewContacts] = useState(false);
+  const [addContactModal, setAddContactModal] = useState(false)
 
    //get contact list titles
    let contactlistArray;
@@ -20,17 +21,24 @@ function PhoneList() {
   }
   const closeContacts = () =>{
     setViewContacts(false)
+    setAddContactModal(false)
   }
+  const addContact = () =>{
+    setAddContactModal(true)
+    console.log(addContactModal)
+  }
+
   return (
     <div>
       {viewContacts ?
-      <div className="contact-list">
-        <button className="close-contact-button" onClick={closeContacts}>x</button>
+      <div className="contact-list-container">
+        <button className="close contact-button" onClick={closeContacts}>x</button>
+        <button className="add contact-button" onClick={addContact}>+</button>
         {contactlistArray.map((contactlists) =>{
-          return <div>
+          return <div className='contact-list' key={contactlists._id}>
             <h2>{contactlists.contactListTitle}</h2>
             {contactlists.contacts.map((contact)=>{
-              return <div className='contact'>
+              return <div className='contact' key={Math.random()}>
                 <p>{contact.firstname} {contact.lastname}</p>
                 <p>{contact.phonenumber}</p>
               </div>
