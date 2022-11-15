@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useQuery } from '@apollo/client';
 import { GET_CONTACTLISTS } from '../../utils/queries';
 import './PhoneList.scss'
+import AddContact from '../Forms/AddContact';
 
 function PhoneList() {
   const [viewContacts, setViewContacts] = useState(false);
@@ -25,6 +26,7 @@ function PhoneList() {
   }
   const addContact = () =>{
     setAddContactModal(true)
+    setViewContacts(false)
     console.log(addContactModal)
   }
 
@@ -47,7 +49,9 @@ function PhoneList() {
         }
         )}
       </div>
-      :
+      : addContactModal ?
+      <AddContact/>:
+
       <button className="phone-list-button" onClick={openContacts}>Contacts</button>
       }
 

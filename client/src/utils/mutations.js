@@ -22,4 +22,20 @@ export const ADD_USER = gql`
             }
         }
     }
+`;
+
+export const ADD_CONTACT = gql`
+mutation addPhoneNumberToContactList($contactLists: ID!, $contacts: ContactInput) {
+  addPhoneNumberToContactList(contactLists: $contactLists, contacts: $contacts) {
+    _id
+    contactListTitle
+    contacts {
+      _id
+      firstname
+      lastname
+      phonenumber
+    }
+  }
+}
+
 `
