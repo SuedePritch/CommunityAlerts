@@ -17,15 +17,23 @@ function AddContact() {
   }
 
 
-  const sendMessages = (event) =>{
-    // event.preventDefault();
-    // AddContact.recipients.split(',').forEach((phonenumber)=>{
-    //     fetch(messageAPIUrl, {method: 'POST', headers: {'Content-Type': 'application/json'},body: JSON.stringify({
-    //         body: AddContact.message, 
-    //         from: '+18704937503', 
-    //         to: phonenumber
-    //     })}).then(res => res.json());
-    // })
+  const addContact = async () =>{
+    console.log(addContactFormData);
+        try {
+            await addcontact ({
+                variables: { 
+                    contactLists: addContactFormData.contactLists,
+                    contacts:{
+                        firstname: addContactFormData.firstname,
+                        lastname: addContactFormData.lastname,
+                        phonenumber: `+1${addContactFormData.phonenumber}`
+                        }
+                    },
+            });
+        } catch (e) {
+        console.log(e)
+            alert('Add Contact Failed')
+        }
 }
 
     const handleChange =(event)=>{
@@ -48,14 +56,12 @@ function AddContact() {
         <form className='form'>
                     <div className='form-field message'>
                     <div className='form-field message'>
-                        <label htmlFor="recipients">Send Message To:</label>
-                        <select name='recipients' type='recipients' id='recipients' onChange={handleChange}>
-                                <option value="null">Select Recipients</option>
+                        <label htmlFor="contactLists">Add Contact to:</label>
+                        <select name='contactLists' type='contactLists' id='contactLists' onChange={handleChange}>
+                                <option value="null">Select Community</option>
                                 {contactlistTitleArray.map((contactlist)=>{
-                                    return <option value={contactlist.contacts.map((contact)=>{
-                                        return contact.phonenumber
-                                    })
-                                    } key={contactlist._id}>{contactlist.contactListTitle}</option>
+                                    return <option value={contactlist._id}
+                                    key={contactlist._id}>{contactlist.contactListTitle}</option>
                                 })}
                             </select>
                     </div>
@@ -75,7 +81,7 @@ function AddContact() {
                         <input name='phonenumber' type='phonenumber' id='phonenumber' 
                             onChange={handleChange}></input>
                     </div>
-                    <button className='form-field message form-field-button ' type='button' onClick={sendMessages}>Send Message </button>
+                    <button className='form-field message form-field-button ' type='button' onClick={addContact}>Add Contact</button>
             </form>
     </div>
   )
