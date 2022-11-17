@@ -93,9 +93,9 @@ const resolvers = {
       return addContactListToCommunity
     },
 
-    addPhoneNumberToContactList: async (parent, {_id, contacts}) =>{
-      return ContactLists.findOneAndUpdate(
-        _id,
+    addPhoneNumberToContactList: async (parent, {contactLists, contacts}) =>{
+      return ContactLists.findByIdAndUpdate(
+        {_id: contactLists},
         {$push:{
           contacts: contacts
         }
