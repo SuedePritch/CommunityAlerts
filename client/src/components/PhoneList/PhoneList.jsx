@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import { GET_CONTACTLISTS } from '../../utils/queries';
+import { DELETE_CONTACT } from '../../utils/mutations';
 import './PhoneList.scss'
 import AddContact from '../Forms/AddContact';
 
 function PhoneList() {
   const [viewContacts, setViewContacts] = useState(false);
   const [addContactModal, setAddContactModal] = useState(false)
-
+  const [deletecontact] = useMutation(DELETE_CONTACT)
    //get contact list titles
    let contactlistArray;
 
@@ -29,6 +30,20 @@ function PhoneList() {
     setViewContacts(false)
     console.log(addContactModal)
   }
+  const deleteContact = async (event) =>{
+    event.preventDefault();
+        try {
+            await deletecontact ({
+                variables: { 
+                  contactLists: event.target.dataset.contactlistsid, 
+                  contactid: event.target.dataset.contactid},
+            });
+            
+        } catch (e) {
+            alert('Delete Failed');
+        }
+    console.log(event.target.dataset.contactid)
+  }
 
   return (
     <div>
@@ -43,6 +58,9 @@ function PhoneList() {
               return <div className='contact' key={Math.random()}>
                 <p>{contact.firstname} {contact.lastname}</p>
                 <p>{contact.phonenumber}</p>
+                <button className='delete-contact' data-contactlistsid={contactlists._id} data-contactid={contact._id} onClick={deleteContact}>
+                  x
+                </button>
               </div>
             })}
           </div>

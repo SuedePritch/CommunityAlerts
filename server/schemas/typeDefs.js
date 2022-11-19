@@ -57,6 +57,7 @@ type Mutation {
     # ContactList
     createNewContactList(contactListTitle: String!, contacts: [ContactInput]): ContactLists
     addPhoneNumberToContactList(contactLists: ID!, contacts:ContactInput): ContactLists
+    deleteContact(contactLists:ID!, contactid: ID!):ContactLists
     
 }
 `;

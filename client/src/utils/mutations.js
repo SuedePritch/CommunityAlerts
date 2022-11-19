@@ -37,5 +37,13 @@ mutation addPhoneNumberToContactList($contactLists: ID!, $contacts: ContactInput
     }
   }
 }
+`
 
+export const DELETE_CONTACT = gql`
+mutation Mutation($contactLists: ID!, $contactid: ID!) {
+  deleteContact(contactLists: $contactLists, contactid: $contactid) {
+    _id
+    contactListTitle
+  }
+}
 `

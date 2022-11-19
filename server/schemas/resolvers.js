@@ -100,9 +100,17 @@ const resolvers = {
           contacts: contacts
         }
       },{ new: true })
-      
-
     },
+
+    deleteContact: async(parent, {contactLists, contactid}) =>{
+      return ContactLists.findByIdAndUpdate(
+        {_id:contactLists},
+        {$pull:{
+          contacts: { _id: contactid }
+        }
+        },{new:true}
+        )
+    }
   }
 };
 
