@@ -44,6 +44,10 @@ function AddContact({setAddContactModal}) {
             });
        
     }
+
+    const exitAddContactModal = () =>{
+        setAddContactModal(false)
+    }
  
 
 
@@ -82,6 +86,8 @@ function AddContact({setAddContactModal}) {
                             onChange={handleChange}></input>
                     </div>
                     <button className='form-field message form-field-button ' type='button' onClick={addContact}>Add Contact</button>
+            <button className='add contact-button' onClick={exitAddContactModal}>+</button>
+            <button className='close contact-button' onClick={exitAddContactModal}>x</button>
             </form>
     </div>
   )
