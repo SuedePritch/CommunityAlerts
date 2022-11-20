@@ -70,17 +70,17 @@
   }
   .delete-contact{
     position: absolute;
-    top:2px;
-    right:2px;
+    top:0;
+    right:0;
     padding:0.25rem;
     aspect-ratio: 1/1;
 
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
+    border-radius: 2px var(--border-radius) 2px 2px;
     letter-spacing: normal;
     border:none;
-    background: hsl(8, 100%, 50%);
-    color:hsl(0, 0%, 0%);
+    background:var(--clr-accent-900);
+    color:var(--clr-primary-500);
   }

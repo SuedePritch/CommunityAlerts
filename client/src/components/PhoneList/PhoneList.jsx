@@ -8,7 +8,7 @@ import AddContact from '../Forms/AddContact';
 function PhoneList() {
   const [viewContacts, setViewContacts] = useState(false);
   const [addContactModal, setAddContactModal] = useState(false)
-  const [deletecontact] = useMutation(DELETE_CONTACT)
+  const [deletecontactmutation] = useMutation(DELETE_CONTACT)
    //get contact list titles
    let contactlistArray;
 
@@ -33,7 +33,7 @@ function PhoneList() {
   const deleteContact = async (event) =>{
     event.preventDefault();
         try {
-            await deletecontact ({
+            await deletecontactmutation ({
                 variables: { 
                   contactLists: event.target.dataset.contactlistsid, 
                   contactid: event.target.dataset.contactid},
@@ -42,7 +42,6 @@ function PhoneList() {
         } catch (e) {
             alert('Delete Failed');
         }
-    console.log(event.target.dataset.contactid)
   }
 
   return (
@@ -68,7 +67,7 @@ function PhoneList() {
         )}
       </div>
       : addContactModal ?
-      <AddContact/>:
+      <AddContact setAddContactModal={setAddContactModal}/>:
 
       <button className="phone-list-button" onClick={openContacts}>Contacts</button>
       }

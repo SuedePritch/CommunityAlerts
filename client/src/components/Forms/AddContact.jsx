@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useQuery, useMutation } from '@apollo/client';
 import { GET_CONTACTLISTS } from '../../utils/queries';
 import { ADD_CONTACT } from '../../utils/mutations';
-function AddContact() {
+function AddContact({setAddContactModal}) {
    // BUILD MUTATION FOR LOGIN_USER
    const [addcontact] = useMutation(ADD_CONTACT); 
    const [addContactFormData, setAddContactFormData] = useState({ firstname: '', lastname: '', phonenumber: ''});
@@ -18,7 +18,6 @@ function AddContact() {
 
 
   const addContact = async () =>{
-    console.log(addContactFormData);
         try {
             await addcontact ({
                 variables: { 
@@ -34,6 +33,7 @@ function AddContact() {
         console.log(e)
             alert('Add Contact Failed')
         }
+        setAddContactModal(false)
 }
 
     const handleChange =(event)=>{
