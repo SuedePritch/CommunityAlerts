@@ -45,7 +45,7 @@ function PhoneList() {
   }
 
   return (
-    <div>
+    <>
       {viewContacts ?
       <div className="contact-list-container">
         <button className="close contact-button" onClick={closeContacts}>x</button>
@@ -68,11 +68,10 @@ function PhoneList() {
       </div>
       : addContactModal ?
       <AddContact setAddContactModal={setAddContactModal}/>:
+    <button className="phone-list-button" onClick={openContacts}>Contacts</button>
+    }
 
-      <button className="phone-list-button" onClick={openContacts}>Contacts</button>
-      }
-
-    </div>
+    </>
   )
 }
 
