@@ -56,7 +56,7 @@ function PhoneList() {
             {contactlists.contacts.map((contact)=>{
               return <div className='contact' key={Math.random()}>
                 <p>{contact.firstname} {contact.lastname}</p>
-                <p>{contact.phonenumber}</p>
+                <p>{contact.phonenumber.split('+1')}</p>
                 <button className='delete-contact' data-contactlistsid={contactlists._id} data-contactid={contact._id} onClick={deleteContact}>
                   x
                 </button>

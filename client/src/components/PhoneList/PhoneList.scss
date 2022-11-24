@@ -85,7 +85,7 @@
   }
 
 
-  @media screen and (max-width:400px) {
+  @media screen and (max-width:500px) {
     .contact-list-container{
       grid-template-columns: repeat(1, 1fr);
     }
@@ -100,7 +100,7 @@
       grid-template-columns: repeat(3, 1fr);
     }
 }
-  @media screen and (min-width:1200px) {
+  @media screen and (min-width:1000px) {
     .contact-list-container{
       grid-template-columns: repeat(5, 1fr);
     }
