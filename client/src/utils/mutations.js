@@ -24,6 +24,14 @@ export const ADD_USER = gql`
     }
 `;
 
+export const CREATE_CONTACTLIST = gql`
+mutation Mutation($contactListTitle: String!) {
+  createNewContactList(contactListTitle: $contactListTitle) {
+    _id
+    contactListTitle
+  }
+}
+`
 export const ADD_CONTACT = gql`
 mutation addPhoneNumberToContactList($contactLists: ID!, $contacts: ContactInput) {
   addPhoneNumberToContactList(contactLists: $contactLists, contacts: $contacts) {

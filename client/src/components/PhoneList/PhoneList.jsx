@@ -4,6 +4,7 @@ import { GET_CONTACTLISTS } from '../../utils/queries';
 import { DELETE_CONTACT } from '../../utils/mutations';
 import './PhoneList.scss'
 import AddContact from '../Forms/AddContact';
+import CreateContactList from '../Forms/CreateContactList';
 
 function PhoneList() {
   const [viewContacts, setViewContacts] = useState(false);
@@ -70,7 +71,7 @@ function PhoneList() {
       <AddContact setAddContactModal={setAddContactModal}/>:
     <button className="phone-list-button" onClick={openContacts}>Contacts</button>
     }
-
+  {/* <CreateContactList/> */}
     </>
   )
 }
