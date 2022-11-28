@@ -19,7 +19,7 @@ function PhoneList() {
    contactlistArray = data.contactList.contactlists
    }
   const openContacts = () =>{
-    setViewContacts(true)
+    setViewContacts(true) 
   }
   const closeContacts = () =>{
     setViewContacts(false)
