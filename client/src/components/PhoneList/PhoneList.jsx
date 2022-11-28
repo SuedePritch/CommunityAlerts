@@ -9,6 +9,7 @@ import CreateContactList from '../Forms/CreateContactList';
 function PhoneList() {
   const [viewContacts, setViewContacts] = useState(false);
   const [addContactModal, setAddContactModal] = useState(false)
+  const [createContactListModal, setCreateContactListModal] = useState(false)
   const [deletecontactmutation] = useMutation(DELETE_CONTACT)
    //get contact list titles
    let contactlistArray;
@@ -30,6 +31,13 @@ function PhoneList() {
     setAddContactModal(true)
     setViewContacts(false)
     console.log(addContactModal)
+  }
+  const openContactList = () =>{
+    setCreateContactListModal(true) 
+  }
+  const closeContactList = () =>{
+    setCreateContactListModal(false)
+    setAddContactModal(false)
   }
   const deleteContact = async (event) =>{
     event.preventDefault();
